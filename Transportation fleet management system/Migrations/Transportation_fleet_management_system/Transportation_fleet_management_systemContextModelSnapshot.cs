@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TFMS.Models;
+using Transportation_fleet_management_system.Data;
 
 #nullable disable
 
-namespace Transportation_fleet_management_system.Migrations
+namespace Transportation_fleet_management_system.Migrations.Transportation_fleet_management_system
 {
-    [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(Transportation_fleet_management_systemContext))]
+    partial class Transportation_fleet_management_systemContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -21,6 +21,47 @@ namespace Transportation_fleet_management_system.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("FleetHub.Models.DemoFormViewModel", b =>
+                {
+                    b.Property<string>("Name")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("City")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("CompanyName")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Country")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("FleetSize")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("SelectedProduct")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Name");
+
+                    b.ToTable("DemoFormViewModel");
+                });
 
             modelBuilder.Entity("TFMS.Models.Driver", b =>
                 {
@@ -67,7 +108,7 @@ namespace Transportation_fleet_management_system.Migrations
 
                     b.HasKey("DriverId");
 
-                    b.ToTable("Drivers", (string)null);
+                    b.ToTable("Driver");
                 });
 
             modelBuilder.Entity("TFMS.Models.Fuel", b =>
@@ -94,7 +135,24 @@ namespace Transportation_fleet_management_system.Migrations
 
                     b.HasIndex("VehicleId");
 
-                    b.ToTable("Fuels", (string)null);
+                    b.ToTable("Fuels");
+                });
+
+            modelBuilder.Entity("TFMS.Models.Login", b =>
+                {
+                    b.Property<string>("UsernameOrEmail")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("RememberMe")
+                        .HasColumnType("bit");
+
+                    b.HasKey("UsernameOrEmail");
+
+                    b.ToTable("Login");
                 });
 
             modelBuilder.Entity("TFMS.Models.Maintenance", b =>
@@ -125,7 +183,7 @@ namespace Transportation_fleet_management_system.Migrations
 
                     b.HasIndex("VehicleId");
 
-                    b.ToTable("Maintenances", (string)null);
+                    b.ToTable("Maintenance");
                 });
 
             modelBuilder.Entity("TFMS.Models.Performance", b =>
@@ -150,7 +208,7 @@ namespace Transportation_fleet_management_system.Migrations
 
                     b.HasKey("PerformanceId");
 
-                    b.ToTable("Performances", (string)null);
+                    b.ToTable("Performance");
                 });
 
             modelBuilder.Entity("TFMS.Models.Trip", b =>
@@ -189,7 +247,7 @@ namespace Transportation_fleet_management_system.Migrations
 
                     b.HasIndex("VehicleId");
 
-                    b.ToTable("Trips", (string)null);
+                    b.ToTable("Trip");
                 });
 
             modelBuilder.Entity("TFMS.Models.Vehicle", b =>
@@ -218,7 +276,7 @@ namespace Transportation_fleet_management_system.Migrations
 
                     b.HasKey("VehicleId");
 
-                    b.ToTable("Vehicles", (string)null);
+                    b.ToTable("Vehicle");
                 });
 
             modelBuilder.Entity("TFMS.Models.Fuel", b =>

@@ -1,0 +1,461 @@
+﻿@* @model IEnumerable<FleetHub.Models.DemoFormViewModel> *@
+
+@* @{ *@
+@*     ViewData["Title"] = "Index"; *@
+@* } *@
+
+@* <h1>Index</h1> *@
+
+@* <p> *@
+@*     <a asp-action="Create">Create New</a> *@
+@* </p> *@
+@* <table class="table"> *@
+@*     <thead> *@
+@*         <tr> *@
+@*             <th> *@
+@*                 @Html.DisplayNameFor(model => model.Email) *@
+@*             </th> *@
+@*             <th> *@
+@*                 @Html.DisplayNameFor(model => model.PhoneNumber) *@
+@*             </th> *@
+@*             <th> *@
+@*                 @Html.DisplayNameFor(model => model.Country) *@
+@*             </th> *@
+@*             <th> *@
+@*                 @Html.DisplayNameFor(model => model.City) *@
+@*             </th> *@
+@*             <th> *@
+@*                 @Html.DisplayNameFor(model => model.CompanyName) *@
+@*             </th> *@
+@*             <th> *@
+@*                 @Html.DisplayNameFor(model => model.FleetSize) *@
+@*             </th> *@
+@*             <th> *@
+@*                 @Html.DisplayNameFor(model => model.SelectedProduct) *@
+@*             </th> *@
+@*             <th></th> *@
+@*         </tr> *@
+@*     </thead> *@
+@*     <tbody> *@
+@* @foreach (var item in Model) { *@
+@*         <tr> *@
+@*             <td> *@
+@*                 @Html.DisplayFor(modelItem => item.Email) *@
+@*             </td> *@
+@*             <td> *@
+@*                 @Html.DisplayFor(modelItem => item.PhoneNumber) *@
+@*             </td> *@
+@*             <td> *@
+@*                 @Html.DisplayFor(modelItem => item.Country) *@
+@*             </td> *@
+@*             <td> *@
+@*                 @Html.DisplayFor(modelItem => item.City) *@
+@*             </td> *@
+@*             <td> *@
+@*                 @Html.DisplayFor(modelItem => item.CompanyName) *@
+@*             </td> *@
+@*             <td> *@
+@*                 @Html.DisplayFor(modelItem => item.FleetSize) *@
+@*             </td> *@
+@*             <td> *@
+@*                 @Html.DisplayFor(modelItem => item.SelectedProduct) *@
+@*             </td> *@
+@*             <td> *@
+@*                 <a asp-action="Edit" asp-route-id="@item.Name">Edit</a> | *@
+@*                 <a asp-action="Details" asp-route-id="@item.Name">Details</a> | *@
+@*                 <a asp-action="Delete" asp-route-id="@item.Name">Delete</a> *@
+@*             </td> *@
+@*         </tr> *@
+@* } *@
+@*     </tbody> *@
+@* </table> *@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FleetHub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        /* Custom styles to refine Bootstrap */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8; /* Light background */
+            margin: 0;
+        }
+
+        .header-custom {
+            background: #284B63; /* Darker, more sophisticated header */
+            padding: 15px 20px;
+            border-bottom: 1px solid #34495e;
+        }
+
+            .header-custom .navbar-brand {
+                display: flex;
+                align-items: center; /* Align items in a row initially */
+                font-size: 2.2rem;
+                font-weight: 600;
+                color: #ffffff;
+                line-height: 1;
+            }
+
+                .header-custom .navbar-brand .logo-icon {
+                    margin-right: 10px;
+                    color: #eb5e28;
+                    font-size: 1em;
+                }
+
+                .header-custom .navbar-brand .brand-text-container {
+                    display: flex;
+                    flex-direction: column; /* Stack 'fleetHub' and tagline vertically */
+                    align-items: flex-start; /* Align text to the left */
+                    line-height: 1; /* Adjust line height for the text container */
+                }
+
+                .header-custom .navbar-brand .brand-name-main {
+                    font-size: 1em; /* Inherit from parent navbar-brand or set explicitly */
+                    font-weight: 600;
+                    color: #ffffff;
+                }
+
+                .header-custom .navbar-brand .tagline {
+                    font-size: 0.8rem; /* Smaller font for the tagline */
+                    font-weight: 400;
+                    color: rgba(255, 255, 255, 0.7); /* Slightly dimmer for contrast */
+                    margin-top: 2px; /* Small space below fleetHub */
+                }
+
+            /* Rest of your existing CSS */
+            .header-custom .navbar-nav .nav-link {
+                color: #ffffff;
+                margin: 0 15px;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                transition: color 0.3s ease;
+            }
+
+                .header-custom .navbar-nav .nav-link:hover,
+                .header-custom .navbar-nav .nav-link.active {
+                    color: #eb5e28; /* Highlight on hover/active */
+                }
+
+                /* New CSS for active icon color */
+                .header-custom .navbar-nav .nav-link .about-us-icon.active-icon {
+                    color: #eb5e28 !important; /* Orange color when active/clicked */
+                }
+
+            .header-custom .btn-primary {
+                background-color: #eb5e28;
+                border-color: #eb5e28;
+                border-radius: 5px;
+                padding: 10px 20px;
+                font-weight: 600;
+                transition: all 0.3s ease;
+            }
+
+                .header-custom .btn-primary:hover {
+                    background-color: #457b9d;
+                    border-color: #16a085;
+                    transform: translateY(-2px);
+                }
+
+                .header-custom .btn-primary:focus {
+                    box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.1);
+                }
+
+        .hero-section {
+            background-color: #fffcf2;
+            padding: 80px 0;
+        }
+
+        .info-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .info-content p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .badge-row img {
+            max-width: 110px;
+            height: auto;
+            margin: 15px 20px;
+            vertical-align: middle;
+            filter: grayscale(0%);
+            transition: all 0.3s ease;
+        }
+
+            .badge-row img:hover {
+                filter: grayscale(0%);
+                transform: translateY(-3px);
+            }
+
+        .client-logos img {
+            max-width: 150px;
+            height: auto;
+            margin: 20px;
+            filter: grayscale(80%);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+            .client-logos img:hover {
+                filter: grayscale(0%);
+                opacity: 1;
+                transform: translateY(-3px);
+            }
+
+        .form-section {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+            .form-section h3 {
+                color: #1abc9c;
+                margin-bottom: 30px;
+                font-weight: 600;
+                text-align: center;
+                font-size: 1.8rem;
+            }
+
+            .form-section .form-control,
+            .form-section .form-select {
+                border-radius: 5px;
+                border: 2px solid #e0e0e0;
+                padding: 12px 15px;
+                margin-bottom: 20px;
+                font-size: 1rem;
+                transition: all 0.3s ease;
+            }
+
+                .form-section .form-control:focus,
+                .form-section .form-select:focus {
+                    border-color: #1abc9c;
+                    box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.1);
+                }
+
+            .form-section .btn-primary {
+                background-color: #eb5e28;
+                ;
+                border-color: #eb5e28;
+                padding: 15px;
+                font-size: 1.2rem;
+                font-weight: 600;
+                width: 100%;
+                border-radius: 5px;
+                transition: all 0.3s ease;
+            }
+
+                .form-section .btn-primary:hover {
+                    background-color: #284B63;
+                    border-color: #457b9d;
+                    transform: translateY(-2px);
+                }
+
+                .form-section .btn-primary:focus {
+                    box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.1);
+                }
+
+        /* Responsive adjustments for smaller screens */
+        @@media (max-width: 767.98px) {
+            .hero-section
+
+        {
+            padding: 60px 0;
+        }
+
+        .info-content h1 {
+            font-size: 2.5rem;
+        }
+
+        .badge-row, .client-logos {
+            justify-content: center !important;
+        }
+
+            .badge-row img, .client-logos img {
+                margin: 10px;
+                max-width: 100px;
+            }
+
+        .form-section {
+            margin-top: 50px;
+        }
+
+        .header-custom .navbar-brand {
+            font-size: 1.8rem;
+            flex-direction: row; /* Go back to row for mobile if preferred */
+            align-items: center;
+        }
+
+            .header-custom .navbar-brand .brand-text-container {
+                align-items: flex-start; /* Align text to the left */
+            }
+
+            .header-custom .navbar-brand .tagline {
+                display: none; /* Hide tagline on mobile if it takes too much space */
+            }
+
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar navbar-expand-lg navbar-light header-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-truck-moving logo-icon"></i>
+                <div class="brand-text-container">
+                    <span class="brand-name-main">FleetHub</span>
+                    <small class="tagline">We Track, You Relax!</small>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">
+                            <i class="bi bi-house-door me-2"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactModal">
+                            <i class="bi bi-envelope me-2"></i> Contact
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Login">
+                            <i class="fas fa-arrow-right-to-bracket me-2"></i> Log in
+                        </a>
+                    </li>
+                    <!--<li class="nav-item">
+                        <a class="nav-link" href="main.html" id="aboutUsLink">
+                            <i class="bi bi-people me-2 about-us-icon"></i> About Us
+                        </a>
+                    </li>-->
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12 mb-4 mb-lg-0 info-content">
+                    <h1>See How FleetHub Can Transform Your Operations</h1>
+                    <p>Request a personalized demo to discover how our platform can streamline your logistics, reduce costs, and boost efficiency.</p>
+                </div>
+
+                <div class="col-lg-6 col-md-12">
+                    <div class="form-section">
+                        <div>
+                            <h3 style="color:#eb5e28">Let's schedule a personalized demo</h3>
+                        </div>
+                        <form>
+                            <label class="form-label col-2 mb-0"><b>Name</b></label>
+                            <input type="text" class="form-control" placeholder="Enter Full Name" required>
+                            <div class="d-flex col-lg-12 gap-3">
+                                <div class="form-group">
+                                    <label class="form-label mb-0"><b>Email Id</b></label>
+                                    <input type="email" class="form-control" placeholder="Enter Email Id" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label mb-0 "><b>Phone Number</b></label>
+                                    <input type="tel" class="form-control" placeholder="Enter Number" required>
+                                </div>
+                            </div>
+                            <div class="d-flex col-lg-12 gap-3">
+                                <div class="form-group">
+                                    <label class="form-label mb-0"><b>Country</b></label>
+                                    <input type="text" class="form-control" placeholder="Enter Country">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label mb-0"><b>City</b></label>
+                                    <input type="text" class="form-control" placeholder="Enter City">
+                                </div>
+                            </div>
+                            <div class="d-flex col-lg-12 gap-3">
+                                <div class="form-group ">
+                                    <label class="form-label mb-0"><b>Company Name</b></label>
+                                    <input type="text" class="form-control" placeholder="Enter Company Name">
+                                </div>
+                                <div class="form-group col-6 ">
+                                    <label class="form-label mb-0"><b>Fleet Size</b></label>
+                                    <select class="form-select" placeholder="Select fleet size">
+                                        <option selected>Select fleet size</option>
+                                        <option value="1-10">1-10</option>
+                                        <option value="11-50">11-50</option>
+                                        <option value="51+">51+</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <label class="form-label mb-0"><b>Select the Product you are looking for</b></label>
+                            <select class="form-select">
+                                <option selected>Select the Product you are looking for</option>
+                                <option value="Fleet Management">Fleet Management</option>
+                                <option value="Route Planning">Route Planning</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary mt-2">Schedule a Demo</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contactModalLabel">Contact Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><b>Admin Contact Number:</b> +1 234 567 890</p>
+                    <p><b>Email:</b> support@fleethub.com</p>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!--<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const aboutUsLink = document.getElementById('aboutUsLink');
+            const aboutUsIcon = aboutUsLink.querySelector('.about-us-icon');
+
+            aboutUsLink.addEventListener('click', function(event) {
+                // Prevent the default link behavior if you don't want it to navigate
+                // event.preventDefault();
+
+                // Toggle the 'active-icon' class on the icon
+                aboutUsIcon.classList.toggle('active-icon');
+
+                // Optional: If you want other nav links to deselect when this one is clicked
+                // document.querySelectorAll('.header-custom .navbar-nav .nav-link').forEach(link => {
+                //     if (link !== aboutUsLink) {
+                //         link.querySelector('i')?.classList.remove('active-icon');
+                //     }
+                // });
+            });
+        });
+    </script>-->
+</body>
+</html>

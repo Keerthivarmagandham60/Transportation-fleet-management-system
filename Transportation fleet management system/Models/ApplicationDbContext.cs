@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TFMS.Models;
 
 namespace TFMS.Models
 {
@@ -28,5 +29,6 @@ namespace TFMS.Models
                 .WithMany()
                 .HasForeignKey(t => t.DriverId);
         }
+        public DbSet<TFMS.Models.Login> Login { get; set; } = default!;
     }
 }

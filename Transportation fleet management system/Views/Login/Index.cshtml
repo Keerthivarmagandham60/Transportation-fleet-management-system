@@ -1,0 +1,485 @@
+﻿@* @model IEnumerable<TFMS.Models.Login> *@
+
+@* @{ *@
+@*     ViewData["Title"] = "Index"; *@
+@* } *@
+
+@* <h1>Index</h1> *@
+
+@* <p> *@
+@*     <a asp-action="Create">Create New</a> *@
+@* </p> *@
+@* <table class="table"> *@
+@*     <thead> *@
+@*         <tr> *@
+@*             <th> *@
+@*                 @Html.DisplayNameFor(model => model.Password) *@
+@*             </th> *@
+@*             <th> *@
+@*                 @Html.DisplayNameFor(model => model.RememberMe) *@
+@*             </th> *@
+@*             <th></th> *@
+@*         </tr> *@
+@*     </thead> *@
+@*     <tbody> *@
+@* @foreach (var item in Model) { *@
+@*         <tr> *@
+@*             <td> *@
+@*                 @Html.DisplayFor(modelItem => item.Password) *@
+@*             </td> *@
+@*             <td> *@
+@*                 @Html.DisplayFor(modelItem => item.RememberMe) *@
+@*             </td> *@
+@*             <td> *@
+@*                 <a asp-action="Edit" asp-route-id="@item.UsernameOrEmail">Edit</a> | *@
+@*                 <a asp-action="Details" asp-route-id="@item.UsernameOrEmail">Details</a> | *@
+@*                 <a asp-action="Delete" asp-route-id="@item.UsernameOrEmail">Delete</a> *@
+@*             </td> *@
+@*         </tr> *@
+@* } *@
+@*     </tbody> *@
+@* </table> *@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FleetHub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        /* Custom styles to refine Bootstrap */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8; /* Light background */
+            margin: 0;
+        }
+
+        .header-custom {
+            background: #284B63; /* Darker, more sophisticated header */
+            padding: 15px 20px;
+            border-bottom: 1px solid #34495e;
+        }
+
+            .header-custom .navbar-brand {
+                display: flex;
+                align-items: center; /* Align items in a row initially */
+                font-size: 2.2rem;
+                font-weight: 600;
+                color: #ffffff;
+                line-height: 1;
+            }
+
+                .header-custom .navbar-brand .logo-icon {
+                    margin-right: 10px;
+                    color: #eb5e28;
+                    font-size: 1em;
+                }
+
+                .header-custom .navbar-brand .brand-text-container {
+                    display: flex;
+                    flex-direction: column; /* Stack 'fleetHub' and tagline vertically */
+                    align-items: flex-start; /* Align text to the left */
+                    line-height: 1; /* Adjust line height for the text container */
+                }
+
+                .header-custom .navbar-brand .brand-name-main {
+                    font-size: 1em; /* Inherit from parent navbar-brand or set explicitly */
+                    font-weight: 600;
+                    color: #ffffff;
+                }
+
+                .header-custom .navbar-brand .tagline {
+                    font-size: 0.8rem; /* Smaller font for the tagline */
+                    font-weight: 400;
+                    color: rgba(255, 255, 255, 0.7); /* Slightly dimmer for contrast */
+                    margin-top: 2px; /* Small space below fleetHub */
+                }
+
+            /* Rest of your existing CSS */
+            .header-custom .navbar-nav .nav-link {
+                color: #ffffff;
+                margin: 0 15px;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                transition: color 0.3s ease;
+            }
+
+                .header-custom .navbar-nav .nav-link:hover,
+                .header-custom .navbar-nav .nav-link.active {
+                    color: #eb5e28; /* Highlight on hover/active */
+                }
+
+                /* New CSS for active icon color */
+                .header-custom .navbar-nav .nav-link .about-us-icon.active-icon {
+                    color: #eb5e28 !important; /* Orange color when active/clicked */
+                }
+
+            .header-custom .btn-primary {
+                background-color: #eb5e28;
+                border-color: #eb5e28;
+                border-radius: 5px;
+                padding: 10px 20px;
+                font-weight: 600;
+                transition: all 0.3s ease;
+            }
+
+                .header-custom .btn-primary:hover {
+                    background-color: #457b9d;
+                    border-color: #16a085;
+                    transform: translateY(-2px);
+                }
+
+                .header-custom .btn-primary:focus {
+                    box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.1);
+                }
+
+        .hero-section {
+            background-color: #fffcf2;
+            padding: 80px 0;
+        }
+
+        .info-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .info-content p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .badge-row img {
+            max-width: 110px;
+            height: auto;
+            margin: 15px 20px;
+            vertical-align: middle;
+            filter: grayscale(0%);
+            transition: all 0.3s ease;
+        }
+
+            .badge-row img:hover {
+                filter: grayscale(0%);
+                transform: translateY(-3px);
+            }
+
+        .client-logos img {
+            max-width: 150px;
+            height: auto;
+            margin: 20px;
+            filter: grayscale(80%);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+            .client-logos img:hover {
+                filter: grayscale(0%);
+                opacity: 1;
+                transform: translateY(-3px);
+            }
+
+        .form-section {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+            .form-section h3 {
+                color: #1abc9c;
+                margin-bottom: 30px;
+                font-weight: 600;
+                text-align: center;
+                font-size: 1.8rem;
+            }
+
+            .form-section .form-control,
+            .form-section .form-select {
+                border-radius: 5px;
+                border: 2px solid #e0e0e0;
+                padding: 12px 15px;
+                margin-bottom: 20px;
+                font-size: 1rem;
+                transition: all 0.3s ease;
+            }
+
+                .form-section .form-control:focus,
+                .form-section .form-select:focus {
+                    border-color: #1abc9c;
+                    box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.1);
+                }
+
+            .form-section .btn-primary {
+                background-color: #eb5e28;
+                ;
+                border-color: #eb5e28;
+                padding: 15px;
+                font-size: 1.2rem;
+                font-weight: 600;
+                width: 100%;
+                border-radius: 5px;
+                transition: all 0.3s ease;
+            }
+
+                .form-section .btn-primary:hover {
+                    background-color: #284B63;
+                    border-color: #457b9d;
+                    transform: translateY(-2px);
+                }
+
+                .form-section .btn-primary:focus {
+                    box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.1);
+                }
+
+        .separator {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #777;
+            margin: 20px 0;
+        }
+
+            .separator::before,
+            .separator::after {
+                content: '';
+                flex-grow: 1;
+                background-color: #ddd;
+                height: 1px;
+                margin: 0 10px;
+            }
+
+        .social-login button {
+            background-color: #fff;
+            color: #333;
+            border: 1px solid #ddd;
+            display: flex;
+            padding: 15px;
+            font-size: 1rem;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+            .social-login button img {
+                /* Adjust size for the Google logo specifically */
+                width: 20px; /* Set a specific width */
+                height: 20px; /* Set a specific height */
+                margin-right: 10px;
+                vertical-align: middle; /* Align image nicely with text */
+            }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #555;
+        }
+
+            .login-link a {
+                color: #eb5e28;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+                .login-link a:hover {
+                    text-decoration: underline;
+                }
+
+
+
+        /* Responsive adjustments for smaller screens */
+        @@media (max-width: 767.98px) {
+            .hero-section
+
+        {
+            padding: 60px 0;
+        }
+
+        .info-content h1 {
+            font-size: 2.5rem;
+        }
+
+        .badge-row, .client-logos {
+            justify-content: center !important;
+        }
+
+            .badge-row img, .client-logos img {
+                margin: 10px;
+                max-width: 100px;
+            }
+
+        .form-section {
+            margin-top: 50px;
+        }
+
+        .header-custom .navbar-brand {
+            font-size: 1.8rem;
+            flex-direction: row; /* Go back to row for mobile if preferred */
+            align-items: center;
+        }
+
+            .header-custom .navbar-brand .brand-text-container {
+                align-items: flex-start; /* Align text to the left */
+            }
+
+            .header-custom .navbar-brand .tagline {
+                display: none; /* Hide tagline on mobile if it takes too much space */
+            }
+
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar navbar-expand-lg navbar-light header-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-truck-moving logo-icon"></i>
+                <div class="brand-text-container">
+                    <span class="brand-name-main">FleetHub</span>
+                    <small class="tagline">We Track, You Relax!</small>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">
+                            <i class="bi bi-house-door me-2"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactModal">
+                            <i class="bi bi-envelope me-2"></i> Contact
+                        </a>
+                    </li>
+
+                    <!--<li class="nav-item">
+                        <a class="nav-link" href="#contact-us" id="aboutUsLink">
+                            <i class="bi bi-people me-2 about-us-icon"></i> About Us
+                        </a>
+                    </li>-->
+
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12 mb-4 mb-lg-0 info-content mb-2">
+                    <h2><strong>Welcome To <b> FleetHub</b> </strong></h2>
+                    <ul class="features-list">
+                        <li>
+                            <p> Improve operational <b>efficiency</b>, reduce operating costs, and enhance overall fleet performance.</p>
+                        </li>
+                        <li>
+                            <p> Gain complete <b>control</b> over all vehicle movements and activities.</p>
+                        </li>
+                        <li>
+                            <p> <b>Streamline communication</b> and dispatch processes for <b>improved coordination.</b></p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-6 col-md-12">
+                    <div class="form-section">
+                        <div>
+                            <h3 style="color:#eb5e28">Sign up to your account</h3>
+                        </div>
+                        <p>Please enter your details below to create an account.</p>
+                        <form>
+                            <label class="form-label col-2 mb-0 d-inline"><b>Full Name</b></label>
+                            <input type="text" class="form-control" placeholder="Enter Full Name" required>
+
+                            <label class="form-label mb-0"><b>Email Address</b></label>
+                            <input type="email" class="form-control" placeholder="Enter Email Address" required>
+
+
+                            <label class="form-label mb-0 "><b>Password</b></label>
+                            <input type="tel" class="form-control" placeholder="Enter your Password" required>
+
+
+
+
+                            <label class="form-label mb-0"><b>Confirm Password</b></label>
+                            <input type="text" class="form-control" placeholder=" Confirm your Password">
+
+
+
+
+                            <button type="submit" class="btn btn-primary mt-2">Sign In</button>
+                        </form>
+                        <div class="separator">Or sign up with</div>
+                        <div class="social-login">
+                            <button>
+                                <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt="Google logo">
+                                Continue with Google
+                            </button>
+                        </div>
+
+                        <div class="login-link">
+                            Already have an account? <a href="Login">Log In</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contactModalLabel">Contact Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><b>Admin Contact Number:</b> +1 234 567 890</p>
+                    <p><b>Email:</b> support@fleethub.com</p>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!--<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const aboutUsLink = document.getElementById('aboutUsLink');
+            const aboutUsIcon = aboutUsLink.querySelector('.about-us-icon');
+
+            aboutUsLink.addEventListener('click', function(event) {
+                // Prevent the default link behavior if you don't want it to navigate
+                // event.preventDefault();
+
+                // Toggle the 'active-icon' class on the icon
+                aboutUsIcon.classList.toggle('active-icon');
+
+                // Optional: If you want other nav links to deselect when this one is clicked
+                // document.querySelectorAll('.header-custom .navbar-nav .nav-link').forEach(link => {
+                //      if (link !== aboutUsLink) {
+                //          link.querySelector('i')?.classList.remove('active-icon');
+                //      }
+                // });
+            });
+        });
+    </script>-->
+</body>
+</html>
+
+
