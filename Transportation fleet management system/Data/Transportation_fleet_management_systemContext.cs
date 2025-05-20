@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TFMS.Models;
+using FleetHub.Models;
 
 namespace Transportation_fleet_management_system.Data
 {
@@ -20,6 +21,8 @@ namespace Transportation_fleet_management_system.Data
         public DbSet<TFMS.Models.Maintenance> Maintenance { get; set; } = default!;
         public DbSet<TFMS.Models.Performance> Performance { get; set; } = default!;
         public DbSet<TFMS.Models.Driver> Driver { get; set; } = default!;
+        public DbSet<TFMS.Models.Login> Login { get; set; } = default!;
+        public DbSet<FleetHub.Models.DemoFormViewModel> DemoFormViewModel { get; set; } = default!;
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
        // {

@@ -58,9 +58,6 @@ namespace Transportation_fleet_management_system.Controllers
 
         // POST: Fuels/Create
         [HttpPost("Create")]
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("FuelId,VehicleId,Date,FuelQuantity,Cost")] Fuel fuel)
         {
@@ -76,6 +73,8 @@ namespace Transportation_fleet_management_system.Controllers
 
         // GET: Fuels/Edit/5
         [HttpGet("Edit/{id}")]
+        [ValidateAntiForgeryToken]
+
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -94,9 +93,6 @@ namespace Transportation_fleet_management_system.Controllers
 
         // POST: Fuels/Edit/5
         [HttpPost("Edit/{id}")]
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("FuelId,VehicleId,Date,FuelQuantity,Cost")] Fuel fuel)
         {

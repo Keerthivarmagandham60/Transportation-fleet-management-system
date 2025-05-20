@@ -3,17 +3,20 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TFMS.Models;
+using Transportation_fleet_management_system.Data;
 
 #nullable disable
 
-namespace Transportation_fleet_management_system.Migrations
+namespace Transportation_fleet_management_system.Migrations.Transportation_fleet_management_system
 {
-    [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(Transportation_fleet_management_systemContext))]
+    [Migration("20250513105500_TFMS")]
+    partial class TFMS
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,7 +70,7 @@ namespace Transportation_fleet_management_system.Migrations
 
                     b.HasKey("DriverId");
 
-                    b.ToTable("Drivers", (string)null);
+                    b.ToTable("Driver");
                 });
 
             modelBuilder.Entity("TFMS.Models.Fuel", b =>
@@ -94,7 +97,7 @@ namespace Transportation_fleet_management_system.Migrations
 
                     b.HasIndex("VehicleId");
 
-                    b.ToTable("Fuels", (string)null);
+                    b.ToTable("Fuels");
                 });
 
             modelBuilder.Entity("TFMS.Models.Maintenance", b =>
@@ -125,7 +128,7 @@ namespace Transportation_fleet_management_system.Migrations
 
                     b.HasIndex("VehicleId");
 
-                    b.ToTable("Maintenances", (string)null);
+                    b.ToTable("Maintenance");
                 });
 
             modelBuilder.Entity("TFMS.Models.Performance", b =>
@@ -150,7 +153,7 @@ namespace Transportation_fleet_management_system.Migrations
 
                     b.HasKey("PerformanceId");
 
-                    b.ToTable("Performances", (string)null);
+                    b.ToTable("Performance");
                 });
 
             modelBuilder.Entity("TFMS.Models.Trip", b =>
@@ -189,7 +192,7 @@ namespace Transportation_fleet_management_system.Migrations
 
                     b.HasIndex("VehicleId");
 
-                    b.ToTable("Trips", (string)null);
+                    b.ToTable("Trip");
                 });
 
             modelBuilder.Entity("TFMS.Models.Vehicle", b =>
@@ -218,7 +221,7 @@ namespace Transportation_fleet_management_system.Migrations
 
                     b.HasKey("VehicleId");
 
-                    b.ToTable("Vehicles", (string)null);
+                    b.ToTable("Vehicle");
                 });
 
             modelBuilder.Entity("TFMS.Models.Fuel", b =>
